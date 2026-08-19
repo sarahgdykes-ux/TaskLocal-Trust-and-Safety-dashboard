@@ -65,7 +65,6 @@ export const loadData = async () => {
     flag_status: statusOverrides[row.report_id] || row.flag_status,
   }))
   const listingById = mapBy(listings, 'listing_id')
-  const bookingById = mapBy(bookings, 'booking_id')
   const customerById = mapBy(customers, 'customer_id')
 
   const enrichedBookings = bookings.map((booking) => ({
