@@ -77,7 +77,7 @@ export const loadData = async () => {
   const bookingByIdEnriched = mapBy(enrichedBookings, 'booking_id')
   const enrichedListings = listings.map((listing) => ({ ...listing, reports: [], bookings: [] }))
   const listingByIdEnriched = mapBy(enrichedListings, 'listing_id')
-  enrichedBookings.forEach((booking) => listingByIdEnriched.get(booking.listing_id)?.bookings.push(booking))
+  enrichedBookings.forEach((booking) => listingByIdEnriched.get(booking.listing_id)?.bookings?.push(booking))
 
   const enrichedReports = reports.map((report) => {
     const booking = report.reference_type === 'booking_id' ? bookingByIdEnriched.get(report.reference_id) : null
@@ -94,8 +94,8 @@ export const loadData = async () => {
       attention: getAttention(report),
       relationshipAvailable: Boolean(booking || listing),
     }
-    if (listing) listing.reports.push(enriched)
-    if (booking) booking.reports.push(enriched)
+    listing?.reports?.push(enriched)
+    booking?.reports?.push(enriched)
     return enriched
   })
 
