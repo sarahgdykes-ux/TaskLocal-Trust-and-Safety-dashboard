@@ -7,6 +7,21 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : null
 
+export const isSupabaseConfigured = Boolean(supabase)
+export const isSafetyTeamSession = (session) => session?.user?.app_metadata?.role === 'safety_team'
+export const getSupabaseSession = () => supabase?.auth.getSession().then(({ data, error }) => {
+  if (error) throw new Error(`Unable to restore session: ${error.message}`)
+  return data.session
+}) || Promise.resolve(null)
+export const subscribeToAuthChanges = (onChange) => supabase?.auth.onAuthStateChange((_event, session) => onChange(session)) || { data: { subscription: { unsubscribe: () => {} } } }
+export const signIn = (email, password) => supabase?.auth.signInWithPassword({ email, password }).then(({ data, error }) => {
+  if (error) throw new Error(error.message)
+  return data.session
+}) || Promise.reject(new Error('Supabase is not configured.'))
+export const signOut = () => supabase?.auth.signOut().then(({ error }) => {
+  if (error) throw new Error(`Unable to sign out: ${error.message}`)
+}) || Promise.resolve()
+
 export const FLAG_LABELS = {
   low_rating: 'Low rating',
   no_show: 'No-show',

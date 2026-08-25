@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { getAttention, getMetrics } from './model'
+import { getAttention, getMetrics, isSafetyTeamSession } from './model'
 
 describe('Trust & Safety analytics', () => {
   it('prioritizes safety concerns above other report types', () => {
@@ -21,5 +21,11 @@ describe('Trust & Safety analytics', () => {
     expect(metrics.resolved).toBe(1)
     expect(metrics.safety).toBe(1)
     expect(metrics.byService.moving).toBe(2)
+  })
+
+  it('only recognizes sessions with the safety team role', () => {
+    expect(isSafetyTeamSession({ user: { app_metadata: { role: 'safety_team' } } })).toBe(true)
+    expect(isSafetyTeamSession({ user: { app_metadata: { role: 'customer' } } })).toBe(false)
+    expect(isSafetyTeamSession(null)).toBe(false)
   })
 })
