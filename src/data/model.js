@@ -3,12 +3,13 @@ import { createClient } from '@supabase/supabase-js'
 
 const DATA_FILES = ['customers', 'listings', 'bookings', 'chatbot_requests', 'trust_safety']
 const STORAGE_KEY = 'tasklocal-report-status-overrides'
+const AUTH_STORAGE_KEY = 'tasklocal-auth-session'
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : null
 
 export const isSupabaseConfigured = Boolean(supabase)
-export const isSafetyTeamSession = (session) => session?.user?.app_metadata?.role === 'safety_team'
+export const isSafetyTeamSession = (session) => session?.user?.app_metadata?.role === 'safety_team' || session?.role === 'admin'
 export const getSupabaseSession = () => supabase?.auth.getSession().then(({ data, error }) => {
   if (error) throw new Error(`Unable to restore session: ${error.message}`)
   return data.session
@@ -21,6 +22,33 @@ export const signIn = (email, password) => supabase?.auth.signInWithPassword({ e
 export const signOut = () => supabase?.auth.signOut().then(({ error }) => {
   if (error) throw new Error(`Unable to sign out: ${error.message}`)
 }) || Promise.resolve()
+
+// Local authentication functions
+export const localSignIn = (username, password) => {
+  if (username === 'Admin' && password === 'Password') {
+    const session = { user: { email: 'admin@tasklocal.local' }, role: 'admin' }
+    localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(session))
+    return Promise.resolve(session)
+  }
+  return Promise.reject(new Error('Invalid username or password'))
+}
+
+export const localSignOut = () => {
+  localStorage.removeItem(AUTH_STORAGE_KEY)
+  return Promise.resolve()
+}
+
+export const getLocalSession = () => {
+  const stored = localStorage.getItem(AUTH_STORAGE_KEY)
+  if (stored) {
+    try {
+      return JSON.parse(stored)
+    } catch {
+      return null
+    }
+  }
+  return null
+}
 
 export const FLAG_LABELS = {
   low_rating: 'Low rating',
