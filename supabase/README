@@ -1,0 +1,26 @@
+TaskLocal Trust & Safety Dashboard
+
+The TaskLocal Trust & Safety Dashboard helps monitor the health and safety of the marketplace by giving the team visibility into reported incidents, flagged users, provider/customer activity, and potential risks.
+
+Key Features
+Incident Monitoring: Review and track reported safety issues.
+Risk & Flagging: Identify accounts or activity that may require attention.
+Case Management: Track incidents from initial report through resolution.
+User Safety: View relevant customer and provider information when investigating issues.
+Dashboard Insights: Quickly identify trends and areas that need action.
+
+The goal is to help TaskLocal respond to safety concerns quickly, protect users, and maintain trust across the marketplace.
+
+## Supabase connection
+
+The dashboard supports the shared TaskLocal Supabase schema and falls back to the bundled CSV demo data when Supabase is not configured.
+
+1. Copy `.env.example` to `.env.local`.
+2. Set `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` to the shared project URL and public anon key.
+3. Apply the shared schema and seed data from the customer app's `backend/schema.sql` and seed files.
+4. Run `supabase/trust-safety-policies.sql` to add authenticated safety-team access. Each operator must have `app_metadata.role` set to `safety_team`; the policy grants read access to `customers`, `listings`, `bookings`, `chatbot_requests`, and `trust_safety`, plus status-only updates to `trust_safety`.
+5. Restart Vite or redeploy after changing environment variables.
+
+The customer app repository is the source of truth for the shared schema. Run its `backend/schema.sql`, then `backend/seed_data.sql`, and optionally `backend/seed_demo_bookings.sql` before running the dashboard policy file. Create individual safety-team users in Supabase Auth and assign the `safety_team` app metadata claim through a trusted admin workflow; do not use customer demo accounts for dashboard access.
+
+The dashboard never uses a Supabase service-role key in the browser. When Supabase variables are present, it requires an authenticated safety-team session and will not fall back to CSV data after an authorization error.
