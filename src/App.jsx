@@ -35,8 +35,8 @@ function App() {
   const handleSignOut = useLocalAuth ? localSignOut : signOut
   if (activeApp === 'hub') return <TaskLocalHub onOpenApp={setActiveApp} />
   if (!authReady) return <LoadingState message="Checking your safety team session" />
-  if (!isSafetyTeamSession(session)) return <AccessDeniedState onSignOut={handleSignOut} />
   if (!session) return <LoginState onSignIn={handleSignIn} error={error} useLocalAuth={useLocalAuth} />
+  if (!isSafetyTeamSession(session)) return <AccessDeniedState onSignOut={handleSignOut} />
   if (error) return <ErrorState message={error} retry={fetchData} />
   if (!data) return <LoadingState />
   const metrics = getMetrics(data)

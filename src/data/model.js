@@ -26,7 +26,13 @@ export const signOut = () => supabase?.auth.signOut().then(({ error }) => {
 // Local authentication functions
 export const localSignIn = (username, password) => {
   if (username === 'Admin' && password === 'Password') {
-    const session = { user: { email: 'admin@tasklocal.local' }, role: 'admin' }
+    const session = { 
+      user: { 
+        email: 'admin@tasklocal.local',
+        app_metadata: { role: 'admin' }
+      }, 
+      role: 'admin' 
+    }
     localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(session))
     return Promise.resolve(session)
   }
