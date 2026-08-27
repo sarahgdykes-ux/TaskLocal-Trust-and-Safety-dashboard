@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200" role="img" aria-labelledby="title desc">
+  <title id="title">TaskLocal logo</title>
+  <desc id="desc">A friendly local-services storefront with a cleaning truck and the letters TL.</desc>
+  <rect width="240" height="200" rx="10" fill="#101d33"/>
+  <g stroke="#6b665d" stroke-width="2" stroke-linejoin="round">
+    <path fill="#bd6540" d="M20 79h128v72a6 6 0 0 1-6 6H26a6 6 0 0 1-6-6z"/>
+    <path fill="#315c4b" d="M11 57h143v23a6 6 0 0 1-6 6H17a6 6 0 0 1-6-6z"/>
+    <path fill="#244838" d="M20 86h128v9H20z" stroke="none"/>
+    <path fill="#ef7244" d="M94 17h50a6 6 0 0 1 6 6v29a6 6 0 0 1-6 6H94a6 6 0 0 1-6-6V23a6 6 0 0 1 6-6z"/>
+  </g>
+  <text x="119" y="46" fill="#15223a" font-family="Arial, sans-serif" font-size="25" font-weight="800" text-anchor="middle">TL</text>
+  <g fill="#faf5dc" stroke="#252e2f" stroke-width="4" stroke-linejoin="round">
+    <path d="M35 91h34v34H35zM101 91h34v34h-34z"/>
+  </g>
+  <g stroke="#252e2f" stroke-width="4"><path d="M52 91v34M35 108h34M118 91v34M101 108h34"/></g>
+  <path d="M72 151v-30c0-22 25-23 25 0v30z" fill="#234738" stroke="#252e2f" stroke-width="4"/>
+  <circle cx="89" cy="138" r="3" fill="#fff4d4"/>
+  <g stroke="#4c5253" stroke-width="2" stroke-linejoin="round">
+    <path d="M153 117h46l11 12h15l9 20v18h-81z" fill="#dc7043"/>
+    <path d="M194 117h13l10 12h-23z" fill="#6d9aae"/>
+    <path d="M157 118h36v16h-36z" fill="#e27044"/>
+    <path d="M207 137h18l8 13h-26z" fill="#e8e1c5"/>
+    <path d="M214 137h11l8 13h-19z" fill="#7ea5ba"/>
+    <path d="M164 163a7 7 0 1 0 0 14 7 7 0 0 0 0-14zm55 0a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" fill="#41464d"/>
+    <circle cx="164" cy="170" r="3" fill="#bfc2bd" stroke="none"/><circle cx="219" cy="170" r="3" fill="#bfc2bd" stroke="none"/>
+  </g>
+  <path d="M152 151c7-15 22-17 30-4 5-9 16-8 22 2v18h-51z" fill="#bd5033"/>
+  <g stroke="#4b5554" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M177 91l-38 80" stroke="#dfd5b7" stroke-width="4"/>
+    <path d="M132 168l8 9m-2-13 8 9m-13-4 7 10m-15-5 7 9" stroke="#f2ead1" stroke-width="4"/>
+    <path d="M169 92v22m15-22v22" stroke="#83adc2" stroke-width="5"/>
+    <path d="M160 91h32v8h-32z" fill="#b8d3dc" stroke-width="2"/>
+  </g>
+  <g stroke="#6a5032" stroke-width="2" stroke-linejoin="round">
+    <path d="M100 136h29l-3 28c-1 8-22 8-23 0z" fill="#f6c834"/>
+    <path d="M98 135c7-4 24-4 33 0-7 5-25 5-33 0z" fill="#ffe473"/>
+    <path d="M106 145c4 3 9 3 13 0m-11 7c3 3 6 3 9 0" fill="none"/>
+  </g>
+</svg>
