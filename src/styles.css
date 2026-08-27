@@ -1,9 +1,9 @@
-:root { font-family: 'DM Sans', 'Segoe UI', sans-serif; color: #213235; background: #1a3a5a; font-synthesis: none; text-rendering: optimizeLegibility; --ink: #213235; --muted: #6b7b7d; --line: #dfe8e6; --panel: #fff; --teal: #0e8178; --teal-dark: #09665f; --soft-teal: #e4f2ef; --amber: #b2761d; --soft-amber: #fff4df; --blue: #376f93; --soft-blue: #e8f1f7; --coral: #b75d51; --soft-coral: #fcecea; }
+:root { font-family: 'DM Sans', 'Segoe UI', sans-serif; color: #213235; background: #1a3a5a; font-synthesis: none; text-rendering: optimizeLegibility; --app-background: #1a3a5a; --ink: #213235; --muted: #6b7b7d; --line: #dfe8e6; --panel: #fff; --teal: #0e8178; --teal-dark: #09665f; --soft-teal: #e4f2ef; --amber: #b2761d; --soft-amber: #fff4df; --blue: #376f93; --soft-blue: #e8f1f7; --coral: #b75d51; --soft-coral: #fcecea; }
 * { box-sizing: border-box; }
 body { margin: 0; min-width: 320px; }
 button, input, select { font: inherit; }
 button { cursor: pointer; }
-.app-shell { min-height: 100vh; display: flex; background: #1a3a5a; }
+.app-shell { min-height: 100vh; display: flex; background: var(--app-background); }
 .sidebar { width: 238px; flex: 0 0 238px; min-height: 100vh; display: flex; flex-direction: column; padding: 25px 15px 18px; background: #183b3b; color: #dce9e6; }
 .brand { display: flex; align-items: center; gap: 10px; padding: 0 12px 30px; color: #fff; font-size: 19px; font-weight: 700; letter-spacing: -.4px; }.brand-mark { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 8px; background: #e4bd70; color: #183b3b; }.workspace-label, .eyebrow { color: #91aaa7; font-size: 10px; font-weight: 800; letter-spacing: 1.1px; text-transform: uppercase; }.workspace-label { padding: 0 12px 11px; }
 .sidebar nav { display: grid; gap: 3px; }.nav-item { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 43px; padding: 0 12px; border: 0; border-radius: 7px; background: transparent; color: #b7ceca; text-align: left; font-size: 13px; }.nav-item:hover { background: #245050; color: #fff; }.nav-item.active { background: #e7f1ee; color: #183b3b; font-weight: 700; }.nav-count { margin-left: auto; width: 18px; height: 18px; display: grid; place-items: center; border-radius: 50%; background: #e4bd70; color: #183b3b; font-size: 11px; font-weight: 800; }.sidebar-footer { display: flex; align-items: center; gap: 9px; margin-top: auto; padding: 13px 10px; border-top: 1px solid #315858; font-size: 11px; }.sidebar-footer strong, .sidebar-footer small { display: block; }.sidebar-footer small { margin-top: 3px; color: #8eaaa5; }.status-dot { width: 8px; height: 8px; border-radius: 50%; background: #77c39a; box-shadow: 0 0 0 4px #285554; }
@@ -22,7 +22,7 @@ button { cursor: pointer; }
 .hub-brand .tasklocal-logo { width: 36px; height: 36px; }
 .auth-brand .tasklocal-logo { width: 38px; height: 38px; }
 .brand-button { width: 100%; border: 0; background: transparent; text-align: left; cursor: pointer; }
-.hub-shell { position: relative; min-height: 100vh; overflow: hidden; background: #1a3a5a; color: var(--ink); }
+.hub-shell { position: relative; min-height: 100vh; overflow: hidden; background: var(--app-background); color: var(--ink); }
 .hub-shell::before { position: absolute; inset: 0; content: ''; background: linear-gradient(125deg, rgba(14,129,120,.09), transparent 38%), linear-gradient(315deg, rgba(226,189,112,.12), transparent 42%); pointer-events: none; }
 .hub-orbit { position: absolute; border: 1px solid rgba(14,129,120,.13); border-radius: 50%; pointer-events: none; }
 .hub-orbit-one { width: 620px; height: 620px; top: -325px; right: -155px; }
